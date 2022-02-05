@@ -38,6 +38,10 @@ th, td {
   border:1px solid black;
 }
 
-td.button {
+td {
+  padding-right:5px;
+}
+
+td.deleteButton {
   border:none;
 }

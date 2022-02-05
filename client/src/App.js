@@ -56,6 +56,22 @@ const App = () => {
     }
   }
 
+  const verifyName = (nameInput) => {
+    if (!nameInput) {
+      setMessage('Please enter a name.')
+      setErrorBool(true)
+      return false
+    }
+    if (nameInput.length > 30) {
+      setMessage('Name must be under 30 characters.')
+      setErrorBool(true)
+      return false
+    }
+
+    console.log('verified ', nameInput)
+    return true
+  }
+
   const checkIfNameAlreadyThere = () => {
     if (
       persons.some(
@@ -88,9 +104,7 @@ const App = () => {
       event.target.reset()
     }
 
-    if (!newName) {
-      setMessage('Please enter a name.')
-      setErrorBool(true)
+    if (!verifyName(newName)) {
       return
     }
 
@@ -98,7 +112,7 @@ const App = () => {
       clearEntry()
       return
     }
-    // TODO: remove dashes from newNumber state with replaceAll before verifying and submitting.
+    // TODO: remove dashes from newNumber state with replaceAll before verifying and submitting. Also remove spaces from newName and newNumber.
     if (!verifyNumber(newNumber)) return // stop if number invalid
 
     if (checkIfNameAlreadyThere()) {
