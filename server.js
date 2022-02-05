@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require("path")
 const morgan = require('morgan')
 const cors = require('cors')
 require('dotenv').config()
@@ -10,6 +11,8 @@ app.use(cors())
 app.use(express.json())
 
 app.use(morgan('tiny'))
+
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
