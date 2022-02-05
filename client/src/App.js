@@ -29,6 +29,7 @@ const App = () => {
       setErrorBool(false)
     }, 5000)
   }, [message])
+  
   console.log('render', persons.length, 'persons')
   
 
@@ -169,11 +170,12 @@ const App = () => {
 
   const deletePerson = (id, name) => {
     console.log('Delete button clicked')
-
+//TODO: make React re-render with filter after deleting person.
     if (window.confirm(`Do you want to delete ${name} from the list?`)) {
       personService
         .remove(id)
         .then((returnedPerson) => {
+          console.log("returned: ", returnedPerson)
           setPersons(persons.filter((person) => person.id !== id))
           setMessage(`Successfully deleted ${name} from the list.`)
           setErrorBool(false)
