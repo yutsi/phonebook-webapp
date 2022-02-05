@@ -2,7 +2,7 @@ import React from 'react'
 
 const Notification = ({ message, isError }) => {
     if (message === null) {
-        return null
+        return <div className="success" style={{visibility: 'hidden'}}>placeholder</div>
       }
     if (isError === true) {
         return (

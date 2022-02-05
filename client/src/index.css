@@ -20,6 +20,7 @@ code {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  width: fit-content;
 }
 
 .success {
@@ -30,4 +31,13 @@ code {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  width: fit-content;
+}
+
+th, td {
+  border:1px solid black;
+}
+
+td.button {
+  border:none;
 }

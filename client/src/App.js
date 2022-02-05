@@ -8,11 +8,11 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [search, setSearch] = useState('')
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(null)
   const [errorBool, setErrorBool] = useState(false)
 
   useEffect(() => { // populate persons with JSON
-    console.log('effect')
+    console.log('personService effect')
     personService
       .getAll()
       .then(initialPersons =>
@@ -21,7 +21,16 @@ const App = () => {
         console.log(err)
       })
   }, [])
+
+  useEffect(() => { // clear message after 5 seconds
+    console.log('clearing message')
+    setTimeout(() => {
+      setMessage(null)
+      setErrorBool(false)
+    }, 5000)
+  }, [message])
   console.log('render', persons.length, 'persons')
+  
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -65,6 +74,10 @@ const App = () => {
     ) {
       setMessage('Number already exists in list.')
       setErrorBool(true)
+      setTimeout(() => {
+        setMessage(null)
+        setErrorBool(false)
+      }, 5000)
       return true
     }
   }
@@ -185,15 +198,23 @@ const App = () => {
       <Notification message={message} isError={errorBool} />
       <h2>Numbers</h2>
       <div>
-        <ul>
-          {persons
-            .filter((person) =>
-              person.name.toLowerCase().includes(search.toLowerCase())
-            )
-            .map(persons =>
-              <Person key={persons.name} persons={persons} remove={() => deletePerson(persons._id, persons.name)} />
-            )}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            {persons
+              .filter((person) =>
+                person.name.toLowerCase().includes(search.toLowerCase())
+              )
+              .map(persons =>
+                <Person key={persons.name} persons={persons} remove={() => deletePerson(persons._id, persons.name)} />
+              )}
+          </tbody>
+        </table>
       </div>
     </div>
   )
