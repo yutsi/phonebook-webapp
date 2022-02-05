@@ -74,10 +74,6 @@ const App = () => {
     ) {
       setMessage('Number already exists in list.')
       setErrorBool(true)
-      setTimeout(() => {
-        setMessage(null)
-        setErrorBool(false)
-      }, 5000)
       return true
     }
   }
@@ -177,20 +173,18 @@ const App = () => {
 
   return (
     <div>
-      <h2>Search phonebook</h2>
+      <label htmlFor="search"><h2>Search phonebook</h2></label>
       <form>
-        <div>
-          <input onChange={handleSearchChange} />
-        </div>
+          <input onChange={handleSearchChange} type="search" name="search"/>
       </form>
       <h2>Add new person</h2>
       <form onSubmit={addPerson}>
-        <div>
+        <label>
           name: <input onChange={handleNameChange} />
-        </div>
-        <div>
+        </label><br />
+        <label>
           number: <input onChange={handleNumberChange} />
-        </div>
+        </label>
         <div>
           <button type='submit'>add</button>
         </div>
