@@ -185,7 +185,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='main'>
       <div className='entry-area'>
         <label htmlFor='search'><h2>Search phonebook</h2></label>
         <form>
@@ -194,19 +194,20 @@ const App = () => {
         <h2>Add new person</h2>
         <form onSubmit={addPerson}>
           <label>
-            name: <input onChange={handleNameChange} />
+            name: <input className='new-entry' onChange={handleNameChange} />
           </label><br />
           <label>
-            number: <input onChange={handleNumberChange} />
+            number: <input className='new-entry' onChange={handleNumberChange} />
           </label>
           <div>
             <button type='submit'>add</button>
           </div>
         </form>
+        <Notification message={message} isError={errorBool} />
       </div>
-      <Notification message={message} isError={errorBool} />
-      <h2>Numbers</h2>
-      <div>
+
+      <div className='numbers-area'>
+        <h2>Numbers</h2>
         <table>
           <thead>
             <tr>
