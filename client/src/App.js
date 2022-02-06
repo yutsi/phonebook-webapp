@@ -29,9 +29,9 @@ const App = () => {
       setErrorBool(false)
     }, 5000)
   }, [message])
-  
+
   console.log('render', persons.length, 'persons')
-  
+
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -170,12 +170,12 @@ const App = () => {
 
   const deletePerson = (id, name) => {
     console.log('Delete button clicked')
-//TODO: make React re-render with filter after deleting person.
+    // TODO: make React re-render with filter after deleting person.
     if (window.confirm(`Do you want to delete ${name} from the list?`)) {
       personService
         .remove(id)
         .then((returnedPerson) => {
-          console.log("returned: ", returnedPerson)
+          console.log('returned: ', returnedPerson)
           setPersons(persons.filter((person) => person.id !== id))
           setMessage(`Successfully deleted ${name} from the list.`)
           setErrorBool(false)
@@ -189,9 +189,9 @@ const App = () => {
 
   return (
     <div>
-      <label htmlFor="search"><h2>Search phonebook</h2></label>
+      <label htmlFor='search'><h2>Search phonebook</h2></label>
       <form>
-          <input onChange={handleSearchChange} type="search" name="search"/>
+        <input onChange={handleSearchChange} type='search' name='search' />
       </form>
       <h2>Add new person</h2>
       <form onSubmit={addPerson}>
