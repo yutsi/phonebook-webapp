@@ -107,9 +107,17 @@ a:visited {
   color: #dbd8d8;
 }
 
+a:hover {
+  color: #ffffff;
+}
+
 button {
   border-radius: 10%;
   padding: 10%;
   color: #d3d3d3;
   background-color: #2c2929;
+}
+
+button:hover {
+  background-color: #000000;
 }
