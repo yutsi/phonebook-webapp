@@ -112,7 +112,6 @@ const App = () => {
       clearEntry()
       return
     }
-    // TODO: remove dashes from newNumber state with replaceAll before verifying and submitting. Also remove spaces from newName and newNumber.
     if (!verifyNumber(newNumber)) return // stop if number invalid
 
     if (checkIfNameAlreadyThere()) {
@@ -169,7 +168,6 @@ const App = () => {
 
   const deletePerson = (id, name) => {
     console.log('Delete button clicked')
-    // TODO: make React re-render with filter after deleting person.
     if (window.confirm(`Do you want to delete ${name} from the list?`)) {
       personService
         .remove(id)
@@ -188,22 +186,24 @@ const App = () => {
 
   return (
     <div>
-      <label htmlFor='search'><h2>Search phonebook</h2></label>
-      <form>
-        <input onChange={handleSearchChange} type='search' name='search' />
-      </form>
-      <h2>Add new person</h2>
-      <form onSubmit={addPerson}>
-        <label>
-          name: <input onChange={handleNameChange} />
-        </label><br />
-        <label>
-          number: <input onChange={handleNumberChange} />
-        </label>
-        <div>
-          <button type='submit'>add</button>
-        </div>
-      </form>
+      <div className='entry-area'>
+        <label htmlFor='search'><h2>Search phonebook</h2></label>
+        <form>
+          <input onChange={handleSearchChange} type='search' name='search' />
+        </form>
+        <h2>Add new person</h2>
+        <form onSubmit={addPerson}>
+          <label>
+            name: <input onChange={handleNameChange} />
+          </label><br />
+          <label>
+            number: <input onChange={handleNumberChange} />
+          </label>
+          <div>
+            <button type='submit'>add</button>
+          </div>
+        </form>
+      </div>
       <Notification message={message} isError={errorBool} />
       <h2>Numbers</h2>
       <div>
