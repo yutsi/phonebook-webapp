@@ -186,46 +186,59 @@ const App = () => {
 
   return (
     <div className='main'>
-      <div className='entry-area'>
-        <label htmlFor='search'><h2>Search phonebook</h2></label>
-        <form>
-          <input onChange={handleSearchChange} type='search' name='search' />
-        </form>
-        <h2>Add new person</h2>
-        <form onSubmit={addPerson}>
-          <label>
-            name: <input className='new-entry' onChange={handleNameChange} />
-          </label><br />
-          <label>
-            number: <input className='new-entry' onChange={handleNumberChange} />
-          </label>
-          <div>
-            <button type='submit'>add</button>
-          </div>
-        </form>
-        <Notification message={message} isError={errorBool} />
-      </div>
+      <div className='content-wrap'>
+        <div className='entry-area'>
+          <label htmlFor='search'><h2>Search phonebook</h2></label>
+          <form>
+            <input onChange={handleSearchChange} type='search' name='search' />
+          </form>
+          <h2>Add new person</h2>
+          <form className='add-table' onSubmit={addPerson}>
+            <div className='row'>
+              <label htmlFor='enter name' className='new-entry-label'>
+                name:
+              </label>
+              <input name='enter name' className='new-entry' onChange={handleNameChange} />
+            </div>
+            <div className='row'>
+              <label htmlFor='enter number' className='new-entry-label'>
+                number:
+              </label>
+              <input name='enter number' className='new-entry' onChange={handleNumberChange} />
+            </div>
+            <div>
+              <button type='submit'>Add</button>
+            </div>
+          </form>
+          <Notification message={message} isError={errorBool} />
+        </div>
 
-      <div className='numbers-area'>
-        <h2>Numbers</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            {persons
-              .filter((person) =>
-                person.name.toLowerCase().includes(search.toLowerCase())
-              )
-              .map(persons =>
-                <Person key={persons.name} persons={persons} remove={() => deletePerson(persons._id, persons.name)} />
-              )}
-          </tbody>
-        </table>
+        <div className='numbers-area'>
+          <h2>Numbers</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              {persons
+                .filter((person) =>
+                  person.name.toLowerCase().includes(search.toLowerCase())
+                )
+                .map(persons =>
+                  <Person key={persons.name} persons={persons} remove={() => deletePerson(persons._id, persons.name)} />
+                )}
+            </tbody>
+          </table>
+        </div>
       </div>
+      <footer>
+        <div className='footer'>
+          This website was made by yutsi using React, Node.js, and MongoDB. Check it out on <a href='https://github.com/yutsi/phonebook-webapp'>Github</a>.
+        </div>
+      </footer>
     </div>
   )
 }
