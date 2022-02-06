@@ -32,7 +32,6 @@ const App = () => {
 
   console.log('render', persons.length, 'persons')
 
-
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }

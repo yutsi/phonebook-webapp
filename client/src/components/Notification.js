@@ -6,11 +6,11 @@ const Notification = ({ message, isError }) => {
   }
   if (isError === true) {
     return (
-          <div className='error'>{message}</div>
+      <div className='error'>{message}</div>
     )
   }
   return (
-      <div className='success'>{message}</div>
+    <div className='success'>{message}</div>
   )
 }
 
