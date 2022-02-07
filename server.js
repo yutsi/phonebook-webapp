@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const morgan = require('morgan')
 const cors = require('cors')
-require('dotenv').config()
+const config = require('./utils/config')
 const logger = require('./utils/logger')
 const personsRouter = require('./controllers/personsRouter')
 const middleware = require('./utils/middleware')
@@ -23,6 +23,9 @@ app.use('/api/persons', personsRouter)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
-const PORT = process.env.PORT
-app.listen(PORT)
-logger.info(`Server running on port ${PORT}`)
+app.listen(config.PORT)
+logger.info(`Server running on port ${config.PORT}`)
+
+if (config.NODE_ENV === 'test') {
+  module.exports = app
+}

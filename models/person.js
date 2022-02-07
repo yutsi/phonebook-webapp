@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 const logger = require('../utils/logger')
+const config = require('../utils/config')
 
-const url = process.env.MONGODB_URI
+const url = config.MONGODB_URI
 
 logger.info('Connecting to ', url)
 
