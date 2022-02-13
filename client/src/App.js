@@ -198,16 +198,16 @@ const App = () => {
               <label htmlFor='enter name' className='new-entry-label'>
                 name:
               </label>
-              <input name='enter name' className='new-entry' onChange={handleNameChange} />
+              <input name='enter name' aria-label='enter name' className='new-entry' onChange={handleNameChange} />
             </div>
             <div className='row'>
               <label htmlFor='enter number' className='new-entry-label'>
                 number:
               </label>
-              <input name='enter number' className='new-entry' onChange={handleNumberChange} />
+              <input name='enter number' aria-label='enter number' className='new-entry' onChange={handleNumberChange} />
             </div>
             <div>
-              <button type='submit'>Add</button>
+              <button type='submit' aria-label='submit'>Add</button>
             </div>
           </form>
           <Notification message={message} isError={errorBool} />
@@ -215,7 +215,7 @@ const App = () => {
 
         <div className='numbers-area'>
           <h2>Numbers</h2>
-          <table>
+          <table aria-label='numbers-table'>
             <thead>
               <tr>
                 <th>Name</th>
